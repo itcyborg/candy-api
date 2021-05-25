@@ -1,0 +1,24 @@
+title: Route
+description: |-
+properties:
+  id:
+    type: string
+  default:
+    type: boolean
+    default: false
+  redirect:
+    type: boolean
+    default: false
+  slug:
+    type: string
+  description:
+    type: string
+    nullable: true
+  type:
+    type: string
+  drafted_at:
+    type: string
+    nullable: true
+x-tags:
+  - Routes
+type: object

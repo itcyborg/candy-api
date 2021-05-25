@@ -1,0 +1,37 @@
+get:
+  summary: Search for Route
+  tags:
+    - Routes
+  responses:
+    '200':
+      description: OK
+      content:
+        application/json:
+          schema:
+            $ref: '../responses/RouteResponse.yaml'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '../../global/responses/ApiError.yaml'
+    '422':
+      description: Unprocessable Entity
+  operationId: get-routes-search
+  parameters:
+    - schema:
+        type: string
+      in: query
+      name: slug
+      required: true
+    - schema:
+        type: string
+      in: query
+      name: element_type
+      required: true
+    - schema:
+        type: string
+      in: query
+      name: language_code
+      required: true
+  description: Get a Route by searching via the slug and element_type

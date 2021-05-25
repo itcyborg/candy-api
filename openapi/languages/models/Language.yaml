@@ -1,0 +1,24 @@
+title: Language
+description: |-
+properties:
+  id:
+    type: string
+    example: y3g6v91o
+  code:
+    type: string
+    example: en
+    pattern: '^[a-zA-Z0-9-]*$'
+  name:
+    type: string
+    example: English
+  default:
+    type: boolean
+    default: false
+    example: true
+  enabled:
+    type: boolean
+    default: false
+    example: true
+x-tags:
+  - Languages
+type: object
