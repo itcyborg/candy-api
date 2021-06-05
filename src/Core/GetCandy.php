@@ -50,7 +50,7 @@ class GetCandy
         }
 
         return $packages->first(function ($p) {
-            return $p->name === 'getcandy/candy-api';
+            return $p->name === 'itcyborg/candy-api';
         })->version;
     }
 

@@ -5,9 +5,9 @@ namespace GetCandy\Api\Core\Assets\Drivers;
 use GetCandy;
 use GetCandy\Api\Core\Assets\Contracts\AssetDriverContract;
 use GetCandy\Api\Core\Assets\Jobs\GenerateTransforms;
-use Image as InterventionImage;
+use PayPal\Api\Image as InterventionImage;
 use Intervention\Image\Exception\NotReadableException;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Finder\SplFileInfo;
 
 class Image extends BaseUploadDriver implements AssetDriverContract

@@ -15,7 +15,7 @@ class TaxTableSeeder extends Seeder
     public function run()
     {
         Tax::create([
-            'percentage' => 20,
+            'percentage' => 16,
             'name' => 'VAT',
             'default' => true,
         ]);

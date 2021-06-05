@@ -53,6 +53,8 @@ class AddOrdersTable extends Migration
             $table->string('shipping_country')->nullable();
             $table->string('shipping_zip')->nullable();
 
+            $table->foreignIdFor(\App\Models\Store::class);
+
             $table->timestamps();
         });
     }
