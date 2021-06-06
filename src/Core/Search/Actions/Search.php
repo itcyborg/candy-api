@@ -3,6 +3,7 @@
 namespace GetCandy\Api\Core\Search\Actions;
 
 use GetCandy\Api\Core\Search\Contracts\SearchManagerContract;
+use Illuminate\Support\Facades\Session;
 use Lorisleiva\Actions\Action;
 
 class Search extends Action

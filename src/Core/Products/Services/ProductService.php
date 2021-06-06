@@ -18,6 +18,7 @@ use GetCandy\Api\Core\Scaffold\BaseService;
 use GetCandy\Api\Core\Scopes\CustomerGroupScope;
 use GetCandy\Api\Core\Search\Events\IndexableSavedEvent;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Session;
 
 class ProductService extends BaseService
 {
@@ -162,6 +163,7 @@ class ProductService extends BaseService
 
         $data['description'] = ! empty($data['description']) ? $data['description'] : '';
         $product->attribute_data = $data;
+        $product->store_id=Session::get('store_id');
 
         if (! empty($data['historical_id'])) {
             $product->id = $data['historical_id'];

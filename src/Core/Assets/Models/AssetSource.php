@@ -35,7 +35,7 @@ class AssetSource extends BaseModel
         return $this->hasMany(Asset::class);
     }
 
-    public function store()
+    public function merchant_store()
     {
         return $this->belongsTo(Store::class);
     }

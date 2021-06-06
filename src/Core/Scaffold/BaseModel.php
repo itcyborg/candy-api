@@ -2,6 +2,7 @@
 
 namespace GetCandy\Api\Core\Scaffold;
 
+use App\Models\Store;
 use GetCandy;
 use GetCandy\Api\Core\Routes\Models\Route;
 use GetCandy\Api\Core\Traits\Hashids;
@@ -53,6 +54,11 @@ abstract class BaseModel extends Model
         return $query->where('enabled', '=', true);
     }
 
+    public function scopeStore($query)
+    {
+        return $query->where('store_id','=',\Illuminate\Support\Facades\Session::get('store_id'));
+    }
+
     /**
      * Scope a query to only include the default record.
      *
@@ -70,7 +76,7 @@ abstract class BaseModel extends Model
     }
 
 
-    public function store()
+    public function merchant_store()
     {
         return $this->belongsTo(Store::class);
     }
@@ -80,7 +86,13 @@ abstract class BaseModel extends Model
     {
         parent::boot();
         self::creating(function($model){
-            $model->store_id=12;
+            if(!is_null(auth()->user())) {
+                $model->store_id = auth()
+                        ->user()
+                        ->merchant_store()
+                        ->where('default_store', '=', 1)
+                        ->first()->id ?? \Illuminate\Support\Facades\Session::get('store_id');
+            }
         });
     }
 

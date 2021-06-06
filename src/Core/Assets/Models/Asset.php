@@ -6,7 +6,7 @@ use App\Models\Store;
 use GetCandy;
 use GetCandy\Api\Core\Scaffold\BaseModel;
 use GetCandy\Api\Core\Tags\Models\Tag;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 class Asset extends BaseModel
 {
@@ -93,10 +93,5 @@ class Asset extends BaseModel
     public function tags()
     {
         return $this->morphToMany(Tag::class, 'taggable');
-    }
-
-    public function store()
-    {
-        return $this->belongsTo(Store::class);
     }
 }

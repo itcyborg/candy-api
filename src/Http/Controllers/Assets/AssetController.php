@@ -9,8 +9,8 @@ use GetCandy\Api\Http\Requests\Assets\UpdateAllRequest;
 use GetCandy\Api\Http\Requests\Assets\UploadRequest;
 use GetCandy\Api\Http\Resources\Assets\AssetResource;
 use Illuminate\Http\Request;
-use Image;
-use Storage;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class AssetController extends BaseController
@@ -21,7 +21,8 @@ class AssetController extends BaseController
 
         $directory = 'uploads/'.Carbon::now()->format('d/m');
 
-        $path = $file->store($directory, 'public');
+//        $path = $file->store($directory, 'public');
+        $path=Storage::putFile($directory, $request->file('file'));
         $thumbnail = null;
 
         // You can't transform a PDF so...

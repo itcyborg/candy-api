@@ -9,6 +9,9 @@
 | These are READ ONLY routes
 |
 */
+
+use App\Models\Store;
+
 Route::get('/','\GetCandy\Api\Core\Root\Actions\FetchRoot');
 //$router->get('/', '\GetCandy\Api\Core\Root\Actions\FetchRoot');
 
