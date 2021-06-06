@@ -89,11 +89,7 @@ abstract class BaseModel extends Model
             if(!is_null(auth()->user())) {
                 $model->store_id = auth()
                         ->user()
-<<<<<<< HEAD
                         ->merchant_store()
-=======
-                        ->store()
->>>>>>> 3cc7a0cc27a54677b24ba13460fe2ca718f5631f
                         ->where('default_store', '=', 1)
                         ->first()->id ?? \Illuminate\Support\Facades\Session::get('store_id');
             }
