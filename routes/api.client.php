@@ -21,7 +21,7 @@ Route::get('collections/{id}', 'Collections\CollectionController@show');
 Route::get('categories/{id}', 'Categories\CategoryController@show');
 Route::get('products/recommended', 'Products\ProductController@recommended');
 Route::get('products/{encoded_id}', '\GetCandy\Api\Core\Products\Actions\FetchProduct');
-Route::get('products', 'Products\ProductController@index');
+$router->get('products', 'Products\ProductController@index');
 
 /*
 * Customers

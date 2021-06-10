@@ -4,6 +4,7 @@ namespace GetCandy\Api\Core\Users\Actions;
 
 use GetCandy;
 use GetCandy\Api\Core\Users\Resources\UserCollection;
+use Illuminate\Support\Facades\Session;
 use Lorisleiva\Actions\Action;
 
 class FetchUsers extends Action
@@ -47,7 +48,7 @@ class FetchUsers extends Action
 
         $sorting = $this->sort ? explode(':', $this->sort) : null;
 
-        $query = (new $userModel)->select('users.*')->with(['customer'])->leftJoin('customers', 'customers.id', '=', 'users.customer_id');
+        $query = (new $userModel)->select('users.*')->with(['customer','merchant_store'])->leftJoin('customers', 'customers.id', '=', 'users.customer_id')->where('store_id',Session::get('store_id'));
         if ($this->keywords) {
             $keywords = explode(' ', $this->keywords);
             foreach ($keywords as $keyword) {

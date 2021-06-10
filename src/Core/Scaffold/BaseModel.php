@@ -2,6 +2,7 @@
 
 namespace GetCandy\Api\Core\Scaffold;
 
+use App\Http\Scopes\StoreScope;
 use App\Models\Store;
 use GetCandy;
 use GetCandy\Api\Core\Routes\Models\Route;
@@ -54,10 +55,10 @@ abstract class BaseModel extends Model
         return $query->where('enabled', '=', true);
     }
 
-    public function scopeStore($query)
-    {
-        return $query->where('store_id','=',\Illuminate\Support\Facades\Session::get('store_id'));
-    }
+//    public function scopeStore($query)
+//    {
+//        return $query->where('store_id','=',\Illuminate\Support\Facades\Session::get('store_id'));
+//    }
 
     /**
      * Scope a query to only include the default record.
@@ -94,6 +95,7 @@ abstract class BaseModel extends Model
                         ->first()->id ?? \Illuminate\Support\Facades\Session::get('store_id');
             }
         });
+        self::addGlobalScope(new StoreScope());
     }
 
     /**
